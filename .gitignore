@@ -1,0 +1,13 @@
+.DS_Store
+build
+backup
+npm-debug.log
+node_modules
+bower_components
+modules/config.js
+prepare
+*.bak
+.idea
+rev
+.vscode
+dump.rdb

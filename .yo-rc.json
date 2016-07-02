@@ -1,0 +1,9 @@
+{
+  "generator-angm": {
+    "appName": "simhood",
+    "angularCookies": true,
+    "angularAnimate": true,
+    "angularSanitize": true,
+    "angularBootstrap": true
+  }
+}
