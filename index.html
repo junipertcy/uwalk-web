@@ -1,18 +1,15 @@
 <!DOCTYPE html>
-<html lang="pt" ng-app="simhood">
+<html lang="en" ng-app="simhood">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<base href="/">
-	<title>hello！</title>
+	<title>SimHood!</title>
 	<meta name="description" content="similar neighbourhood query system" />
-	<meta name="author" content="" />
+	<meta name="author" content="junipertcy" />
 	<meta name="keywords" content="" />
-	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=yes" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
 	<link rel="shortcut icon" href="assets/images/favicon.ico" />
-	<link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
-	<link rel="apple-touch-icon" sizes="72x72" href="assets/images/apple-touch-icon-72x72.png" />
-	<link rel="apple-touch-icon" sizes="114x114" href="assets/images/apple-touch-icon-114x114.png" />
 	<!-- injector:css -->
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<!-- endinjector -->
@@ -22,7 +19,7 @@
 <div ng-include="'modules/nav-bar/navbar.html'"></div>
 <!--Beginning-->
 <section id="wrapper" scroll-to>
-	<div class="view-slide-in" ui-view></div>
+	<div class="view-slide-in" ui-view="index"></div>
 </section>
 <!--End-->
 
@@ -43,11 +40,11 @@
 <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 <script src="/modules/app.js"></script>
 <script src="/modules/app.config.js"></script>
-<script src="/modules/home/homeModule.js"></script>
-<script src="/modules/home/homeCtrl.js"></script>
+<script src="/modules/index/indexModule.js"></script>
+<script src="/modules/index/indexCtrl.js"></script>
 <script src="/modules/nav-bar/navBarCtrl.js"></script>
-<script src="/components/routers/homeRoute.js"></script>
-<script src="/components/services/homeService.js"></script>
+<script src="/components/routers/indexRoute.js"></script>
+<script src="/components/services/indexService.js"></script>
 <script src="/components/services/navbarService.js"></script>
 <script src="/components/directives/navbarDirective.js"></script>
 <!-- endinjector -->

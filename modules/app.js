@@ -19,7 +19,7 @@
     'ngTouch',
     'ngSanitize',
     'ui.router',
-    'home',
+    'index',
   ]);
 
 })();

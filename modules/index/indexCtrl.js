@@ -11,9 +11,9 @@
 
 	angular
 		.module('simhood')
-		.controller('HomeCtrl', Home);
+		.controller('indexCtrl', Index);
 
-	Home.$inject = ['homeService'];
+	Index.$inject = ['indexService'];
 
 	/*
 	* recommend
@@ -21,12 +21,12 @@
 	* and bindable members up top.
 	*/
 
-	function Home(homeService) {
+	function Index(indexService) {
 		/*jshint validthis: true */
 		var vm = this;
 		vm.title = "Hello, simhood!";
 		vm.version = "1.0.0";
-		vm.listFeatures = homeService.getFeaturesList();
+		vm.listFeatures = indexService.getFeaturesList();
 
 	}
 

@@ -20,8 +20,6 @@
   Menu.$inject = ['$http'];
 
   function Menu($http) {
-    // Sample code.
-
     var menu = [
       {
         link: '.',
@@ -33,7 +31,7 @@
       listMenu: function () {
         return menu;
       }
-    }
+    };
 
   }
 

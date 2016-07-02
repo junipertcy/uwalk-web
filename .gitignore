@@ -10,4 +10,5 @@ prepare
 .idea
 rev
 .vscode
+js/config.js
 dump.rdb

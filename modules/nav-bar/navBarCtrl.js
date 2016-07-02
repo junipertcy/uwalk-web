@@ -13,7 +13,7 @@
 		.module('simhood')
 		.controller('NavBarCtrl', NavBar);
 
-	NavBar.$inject = ['homeService', 'MenuService'];
+	NavBar.$inject = ['indexService', 'MenuService'];
 
 	/*
 	* recommend
@@ -21,7 +21,7 @@
 	* and bindable members up top.
 	*/
 
-	function NavBar(homeService, MenuService) {
+	function NavBar(indexService, MenuService) {
 		/*jshint validthis: true */
 		var vm = this;
 		vm.title = "simhood!!";

@@ -3,18 +3,18 @@
 
   /**
   * @ngdoc function
-  * @name app.service:homeService
+  * @name app.service:indexService
   * @description
-  * # homeService
+  * # indexService
   * Service of the app
   */
 
   angular.module('simhood')
-    .factory('homeService', homeService);
+    .factory('indexService', indexService);
 
-  homeService.$inject = ['$http'];
+  indexService.$inject = ['$http'];
 
-  function homeService($http) {
+  function indexService($http) {
 
     var list = [
       {"feature": "Implemented Best Practices, following: John Papa's Guide"},

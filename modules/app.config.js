@@ -23,18 +23,13 @@
 
     // This is required for Browser Sync to work poperly
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
-
-
         $urlRouterProvider
         .otherwise('/');
-
       }
 
       runBlock.$inject = ['$rootScope'];
 
       function runBlock($rootScope) {
-        'use strict';
-
         console.log('AngularJS run() function...');
       }
 

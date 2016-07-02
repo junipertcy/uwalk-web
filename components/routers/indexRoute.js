@@ -11,12 +11,15 @@
 angular.module('simhood')
   .config(['$stateProvider', function ($stateProvider) {
     $stateProvider
-
-      .state('home', {
+      .state('index', {
         url: '/',
-        templateUrl: 'modules/home/home.html',
-        controller: 'HomeCtrl',
-        controllerAs: 'vm'
+        views: {
+          'index': {
+            templateUrl: 'modules/index/index.html',
+            controller: 'indexCtrl',
+            controllerAs: 'vm'
+          }
+        }
       });
 
   }]);
