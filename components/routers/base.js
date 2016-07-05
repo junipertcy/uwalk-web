@@ -2,26 +2,6 @@
   /**
   * Route of the app
   */
-// angular.module('simhood')
-//   .config(['$stateProvider', function ($stateProvider) {
-//     $stateProvider
-//       .state('index', {
-//         url: '/',
-//         views: {
-//           'index': {
-//             templateUrl: 'modules/index/index.html',
-//             controller: 'indexCtrl',
-//             controllerAs: 'vm'
-//           }
-//         }
-//       })
-//       .state('search', {
-//         url: '/search',
-//         templateUrl: 'modules/search/search.html',
-//         controller: 'searchCtrl',
-//         controllerAs: 'vm'
-//       });;
-//   }]);
 
 angular.module('simhood').constant('RouteManifest', {
   'index': {
