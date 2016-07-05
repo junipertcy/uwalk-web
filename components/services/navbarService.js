@@ -20,12 +20,22 @@
   Menu.$inject = ['$http'];
 
   function Menu($http) {
-    var menu = [
-      {
-        link: '.',
-        name: 'This is a Placeholder menu. It disappears when the first module has been created.'
-      }
-    ];
+    var menu = [{
+        link: 'search',
+        name: 'Search!!'
+      },{
+        link: './about',
+        name: 'About'
+      },{
+        link: './about',
+        name: 'Research'
+      },{
+        link: './about',
+        name: 'Press'
+      },{
+        link: './about',
+        name: 'Contact'
+      }];
 
     return {
       listMenu: function () {

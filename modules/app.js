@@ -10,8 +10,9 @@
   * Main module of the application.
   */
 
-  angular.module('simhood', [
+  var app = angular.module('simhood', [
     'ngResource',
+    'oc.lazyLoad',
     'ngAria',
     'ui.bootstrap',
     'ngCookies',
@@ -21,5 +22,4 @@
     'ui.router',
     'index',
   ]);
-
 })();

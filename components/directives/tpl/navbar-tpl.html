@@ -7,11 +7,11 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="/#!/">{{ brand }}</a>
+      <a class="navbar-brand" href="/">{{ brand }}</a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li ng-repeat="item in menus" ng-class="{active:isActive('#/' + item.link)}">
+        <li ng-repeat="item in menus" ng-class="{active:isActive(item.link)}">
           <a ui-sref="{{ item.link }}">{{ item.name }}</a>
         </li>
       </ul>

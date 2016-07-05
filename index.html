@@ -19,7 +19,7 @@
 <div ng-include="'modules/nav-bar/navbar.html'"></div>
 <!--Beginning-->
 <section id="wrapper" scroll-to>
-	<div class="view-slide-in" ui-view="index"></div>
+	<div class="view-slide-in" ui-view></div>
 </section>
 <!--End-->
 
@@ -38,15 +38,19 @@
 <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
 <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <script src="/bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+<script src="/bower_components/oclazyload/dist/ocLazyLoad.js"></script>
+<script src="/bower_components/lodash/lodash.js"></script>
 <script src="/modules/app.js"></script>
 <script src="/modules/app.config.js"></script>
 <script src="/modules/index/indexModule.js"></script>
 <script src="/modules/index/indexCtrl.js"></script>
 <script src="/modules/nav-bar/navBarCtrl.js"></script>
-<script src="/components/routers/indexRoute.js"></script>
+<script src="/modules/search/searchCtrl.js"></script>
+<script src="/components/routers/base.js"></script>
 <script src="/components/services/indexService.js"></script>
 <script src="/components/services/navbarService.js"></script>
 <script src="/components/directives/navbarDirective.js"></script>
+<script src="/modules/router.js"></script>
 <!-- endinjector -->
 
 </body>

@@ -8,8 +8,6 @@
   * # Config and run block
   * Configutation of the app
   */
-
-
   angular
     .module('simhood')
     .config(configure)
@@ -19,7 +17,7 @@
 
   function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 
-    $locationProvider.hashPrefix('!');
+    $locationProvider.html5Mode(true);
 
     // This is required for Browser Sync to work poperly
     $httpProvider.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';

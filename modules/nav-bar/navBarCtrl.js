@@ -25,7 +25,6 @@
 		/*jshint validthis: true */
 		var vm = this;
 		vm.title = "simhood!!";
-
 		vm.menu = MenuService.listMenu();
 
 	}

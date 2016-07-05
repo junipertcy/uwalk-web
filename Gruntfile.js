@@ -5,9 +5,8 @@ module.exports = function (grunt) {
 
 	// Project configuration.
 	grunt.initConfig({
-
 		pkg: grunt.file.readJSON('package.json'),
-		banner: '/*!\n' +
+		banner: '/\n' +
 		'* <%= pkg.name %> - v<%= pkg.version %> - MIT LICENSE <%= grunt.template.today("yyyy-mm-dd") %>. \n' +
 		'* @author <%= pkg.author %>\n' +
 		'*/\n',
@@ -44,9 +43,10 @@ module.exports = function (grunt) {
 					'modules/app.config.js',
 					'modules/**/*Module.js',
 					'modules/**/*Ctrl.js',
-					'components/routers/*Route.js',
-					'components/services/*Service.js',
-					'components/directives/*Directive.js'
+					'components/routers/*.js',
+					'components/services/*.js',
+					'components/directives/*.js',
+					'modules/router.js',
 				],
 				dest: 'assets/js/<%= pkg.name %>-appbundle.js'
 			},
@@ -55,7 +55,6 @@ module.exports = function (grunt) {
 					// Angular Project Dependencies,
 					'assets/libs/angular/angular.js',
 					'assets/libs/**/*.js'
-
 				],
 				dest: 'assets/js/<%= pkg.name %>-angularbundle.js'
 			}
@@ -119,9 +118,10 @@ module.exports = function (grunt) {
 						'modules/app.config.js',
 						'modules/**/*Module.js',
 						'modules/**/*Ctrl.js',
-						'components/routers/*Route.js',
-						'components/services/*Service.js',
-						'components/directives/*Directive.js'
+						'components/routers/*.js',
+						'components/services/*.js',
+						'components/directives/*.js',
+						'modules/router.js'
 					]
 				}
 			},

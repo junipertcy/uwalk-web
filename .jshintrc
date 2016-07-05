@@ -33,7 +33,7 @@
 		"mocha": true
 	},
 	"predef": [
-		""
+		"_"
 	]
 
 }

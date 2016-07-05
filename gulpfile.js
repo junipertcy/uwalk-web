@@ -15,6 +15,8 @@ var gulp = require('gulp')
   , csso = require('gulp-csso')
   , useref = require('gulp-useref')
   , rename = require('gulp-rename')
+  , awspublish = require('gulp-awspublish')
+  , gulpSequence = require('gulp-sequence')
   , fs = require('fs')
   , copyDir = require('copy-dir')
   ;
@@ -123,7 +125,6 @@ gulp.task('md5-all', function () {
   var revAll = new RevAll({
     debug: !true,
     replacer: function (fragment, replaceRegExp, newReference, referencedFile) {
-      //这里修正了gulp-rev-all的替换规则,目的是不替换跟文件名同名的变量
       if (newReference.indexOf('/') === -1) {
         fragment.contents = fragment.contents.replace(replaceRegExp, '$1' + '$2' + '$3$4');
       } else {
@@ -209,3 +210,30 @@ gulp.task('renameDir', ['rename-index'], function () {
 
 gulp.task('default', ['watch']);
 gulp.task('release', ['renameDir']);
+
+gulp.task('s3:production', function(){
+  //var awsConf = localConfig.getAwsConf('production');
+  var publisher = awspublish.create({
+    region: 'us-west-1',
+    params: {
+      Bucket: 'uwalk.junipertcy.info',
+    }
+  }, {
+    cacheFileName: ''
+  });
+
+  var headers = {
+    'Cache-Control': 'max-age=315360000, no-transform, public'
+  };
+
+  return gulp.src(['build/**/*'])
+    .pipe(awspublish.gzip({ ext: '' }))
+    .pipe(publisher.publish(headers))
+    .pipe(publisher.sync())
+    .pipe(publisher.cache())
+    .pipe(awspublish.reporter({
+      states: ['create', 'update', 'delete']
+    }));
+});
+
+gulp.task('s3:push', gulpSequence('clean', 'release', 's3:production'));

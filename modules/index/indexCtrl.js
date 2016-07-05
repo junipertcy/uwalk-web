@@ -8,9 +8,7 @@
 	* # HomeCtrl
 	* Controller of the app
 	*/
-
-	angular
-		.module('simhood')
+	angular.module('simhood')
 		.controller('indexCtrl', Index);
 
 	Index.$inject = ['indexService'];
