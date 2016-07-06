@@ -12,7 +12,9 @@ angular.module('simhood').constant('RouteManifest', {
     resolve: {
       deps: ['$ocLazyLoad',
         function ($ocLazyLoad) {
-          return $ocLazyLoad.load(['modules/index/indexCtrl.js']);
+          return $ocLazyLoad.load([
+            'modules/index/indexCtrl.js'
+          ]);
         }
       ]
     }

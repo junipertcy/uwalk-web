@@ -1,48 +1,37 @@
 'use strict';
 
-(function () {
+angular
+  .module('simhood')
+  .factory('MenuService', Menu);
 
-  /**
-  * @ngdoc function
-  * @name app.service:menuService
-  * @description
-  * # menuService
-  * Service of the app
-  */
+// Inject your dependencies as .$inject = ['$http', '$anotherDependency'];
+// function Name ($http, $anotherDependency) {...}
 
-  angular
-    .module('simhood')
-    .factory('MenuService', Menu);
+Menu.$inject = ['$http'];
 
-  // Inject your dependencies as .$inject = ['$http', '$anotherDependency'];
-  // function Name ($http, $anotherDependency) {...}
+function Menu($http) {
+  var menu = [{
+      link: 'search',
+      name: 'Search!!'
+    },{
+      link: './about',
+      name: 'About'
+    },{
+      link: './about',
+      name: 'Research'
+    },{
+      link: './about',
+      name: 'Press'
+    },{
+      link: './about',
+      name: 'Contact'
+    }];
 
-  Menu.$inject = ['$http'];
+  return {
+    listMenu: function () {
+      return menu;
+    }
+  };
 
-  function Menu($http) {
-    var menu = [{
-        link: 'search',
-        name: 'Search!!'
-      },{
-        link: './about',
-        name: 'About'
-      },{
-        link: './about',
-        name: 'Research'
-      },{
-        link: './about',
-        name: 'Press'
-      },{
-        link: './about',
-        name: 'Contact'
-      }];
+}
 
-    return {
-      listMenu: function () {
-        return menu;
-      }
-    };
-
-  }
-
-})();

@@ -1,5 +1,6 @@
-(function() {
-  'use strict';
+'use strict';
+
+(function(angular, uwalk) {
 
   /**
   * @ngdoc index
@@ -19,7 +20,9 @@
     'ngAnimate',
     'ngTouch',
     'ngSanitize',
-    'ui.router',
-    'index',
+    'ui.router'
   ]);
-})();
+
+  app.constant('API', uwalk.API);
+
+})(angular, uwalk);

@@ -17,7 +17,7 @@
     vm.title = "Hello, simhood!";
     vm.version = "1.0.0";
     vm.listFeatures = indexService.getFeaturesList();
-
+    vm.data = [10,20,30,40,60, 80, 20, 50];
   }
 
 })();

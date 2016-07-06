@@ -23,7 +23,7 @@ module.exports = function (grunt) {
 				src: 'Gruntfile.js'
 			},
 			app: {
-				src: ['modules/**/*.js']
+				src: ['modules/**/*.js', 'components/**/*.js']
 			}
 		},
 
@@ -39,14 +39,15 @@ module.exports = function (grunt) {
 			base: {
 				src: [
 					// Angular Project Dependencies,
+					'modules/config.js',
 					'modules/app.js',
 					'modules/app.config.js',
+					'modules/router.js',
 					'modules/**/*Module.js',
 					'modules/**/*Ctrl.js',
 					'components/routers/*.js',
 					'components/services/*.js',
-					'components/directives/*.js',
-					'modules/router.js',
+					'components/directives/*.js'
 				],
 				dest: 'assets/js/<%= pkg.name %>-appbundle.js'
 			},
@@ -114,14 +115,15 @@ module.exports = function (grunt) {
 				files: {
 					'index.html': [
 						'bower.json',
+						'modules/config.js',
 						'modules/app.js',
 						'modules/app.config.js',
+						'modules/router.js',
 						'modules/**/*Module.js',
 						'modules/**/*Ctrl.js',
 						'components/routers/*.js',
 						'components/services/*.js',
-						'components/directives/*.js',
-						'modules/router.js'
+						'components/directives/*.js'
 					]
 				}
 			},

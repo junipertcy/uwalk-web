@@ -1,42 +1,28 @@
-(function () {
-  'use strict';
+'use strict';
 
-  /**
-  * @ngdoc function
-  * @name app.service:indexService
-  * @description
-  * # indexService
-  * Service of the app
-  */
+angular.module('simhood')
+  .factory('indexService', indexService);
 
-  angular.module('simhood')
-    .factory('indexService', indexService);
+indexService.$inject = ['$http'];
 
-  indexService.$inject = ['$http'];
+function indexService($http) {
 
-  function indexService($http) {
+  var list = [
+    {"feature": "Search with your neighbourhoods! You obtain results with similar neighbourhoods around the world."},
+    {"feature": "Share your search result on Twitter or Facebook!"},
+    {"feature": "Get a feeling of how these neighbourhoods are similar."},
+    {"feature": "Propose a better query result with ease. Send it back and let us know!"},
+    {"feature": "Cheng-Te and Eddie are very handsome."},
+    {"feature": "Our UX designer, Gao Xi is awesome!"}
+  ];
 
-    var list = [
-      {"feature": "Implemented Best Practices, following: John Papa's Guide"},
-      {"feature": "Using Controller AS syntax"},
-      {"feature": "Wrap Angular components in an Immediately Invoked Function Expression (IIFE)"},
-      {"feature": "Declare modules without a variable using the setter syntax"},
-      {"feature": "Using named functions"},
-      {"feature": "Including Unit test with Karma"},
-      {"feature": "Including UI options for Bootstrap or Angular-Material"},
-      {"feature": "Including Angular-Material-Icons for Angular-Material UI"},
-      {"feature": "Dynamic Menu generator for both themes"},
-      {"feature": "Grunt task for Production and Development"}
-    ];
+  return {
+    getFeaturesList: getFeaturesList
+  };
 
-    return {
-      getFeaturesList: getFeaturesList
-    };
-
-    function getFeaturesList() {
-      return list;
-    }
-
+  function getFeaturesList() {
+    return list;
   }
 
-})();
+}
+
