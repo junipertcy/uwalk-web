@@ -11,20 +11,17 @@ Menu.$inject = ['$http'];
 
 function Menu($http) {
   var menu = [{
-      link: 'search',
-      name: 'Search!!'
-    },{
-      link: './about',
+      link: 'about',
       name: 'About'
     },{
-      link: './about',
+      link: 'research',
       name: 'Research'
     },{
-      link: './about',
-      name: 'Press'
+      link: 'behind',
+      name: 'Behind'
     },{
-      link: './about',
-      name: 'Contact'
+      link: 'search',
+      name: 'Search the Hoods'
     }];
 
   return {

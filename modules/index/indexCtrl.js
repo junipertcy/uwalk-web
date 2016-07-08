@@ -20,9 +20,9 @@ Index.$inject = ['indexService'];
 
 function Index(indexService) {
 	/*jshint validthis: true */
-	var vm = this;
-	vm.title = "Hello, SimHood!";
-	vm.version = "0.0.1";
-	vm.listFeatures = indexService.getFeaturesList();
+	var iCtrl = this;
+	iCtrl.title = "Hello, SimHood!";
+	iCtrl.version = "0.0.1";
+	iCtrl.listFeatures = indexService.getFeaturesList();
 }
 
