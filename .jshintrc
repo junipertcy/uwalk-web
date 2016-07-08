@@ -33,7 +33,9 @@
 		"mocha": true
 	},
 	"predef": [
-		"_"
+		"_",
+		"uwalk",
+		"d3"
 	]
 
 }

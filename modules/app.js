@@ -1,26 +1,18 @@
 'use strict';
 
 (function(angular, uwalk) {
-
-  /**
-  * @ngdoc index
-  * @name app
-  * @description
-  * # app
-  *
-  * Main module of the application.
-  */
-
   var app = angular.module('simhood', [
     'ngResource',
     'oc.lazyLoad',
+    'angularPainlessTitle', //Not used currently
+    'leaflet-directive',
     'ngAria',
     'ui.bootstrap',
     'ngCookies',
     'ngAnimate',
     'ngTouch',
     'ngSanitize',
-    'ui.router'
+    'ui.router',
   ]);
 
   app.constant('API', uwalk.API);

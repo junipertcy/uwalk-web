@@ -39,6 +39,7 @@ module.exports = function (grunt) {
 			base: {
 				src: [
 					// Angular Project Dependencies,
+					'css/*.css',
 					'modules/config.js',
 					'modules/app.js',
 					'modules/app.config.js',
@@ -114,6 +115,7 @@ module.exports = function (grunt) {
 			dev: {
 				files: {
 					'index.html': [
+						'css/*.css',
 						'bower.json',
 						'modules/config.js',
 						'modules/app.js',

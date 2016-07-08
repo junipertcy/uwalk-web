@@ -1,3 +1,16 @@
-<div ng-controller="NavBarCtrl as vm">
-    <nav-bar menus="vm.menu" brand="vm.title"></nav-bar>
+<div id="header-container" ng-controller="NavBarCtrl as vm">
+  <div class="container">
+    <div class="col-md-2 col-sm-3 col-xs-3 no-padding">
+      <a href="/" target="_self" style="margin-top:13px" class="pointer"><img src="/assets/img/logo-fake.png" alt="uwalk" style="width:120px;margin-left:-16px;margin-top:4px" /></a>
+    </div>
+    <form class="navbar-form navbar-left margin-none ng-pristine ng-valid">
+      <div class="search-1">
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon-search"></i></span>
+          <input type="text" class="form-control form-control-w-150" placeholder="Type in a City ...">
+        </div>
+      </div>
+    </form>
+    <!-- <nav-bar menus="vm.menu" brand="vm.title"></nav-bar> -->
+  </div>
 </div>

@@ -25,6 +25,23 @@
     "angular-bootstrap": "~0.14.3",
     "oclazyload": "^1.0.9",
     "lodash": "^4.13.1",
-    "d3": "^4.1.0"
+    "d3": "^4.1.0",
+    "angular-painless-title": "^0.1.5",
+    "angular-leaflet-directive": "^0.10.0",
+    "leaflet": "^0.7.7",
+    "font-awesome": "^4.6.3",
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css"
+      ]
+    },
+    "font-awesome": {
+      "main": [
+        "css/font-awesome.min.css"
+      ]
+    }
   }
 }
