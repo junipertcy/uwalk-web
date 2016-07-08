@@ -21,10 +21,27 @@ function Index(indexService, $scope) {
       lat: 40.748817,
       lng: -73.985428,
       zoom: 11
+    },
+    defaults: {
+      zoomControl: false,
+      doubleClickZoom: false,
+      scrollWheelZoom: false,
+      tap: false,
+      touchZoom: false,
+      minZoom: 11,
+      maxZoom: 11
     }
   });
 
+  $scope.data = {
+    cb1: false
+  };
 
+  // $scope.message = 'false';
+
+  // $scope.onChange = function(cbState) {
+  //   $scope.message = cbState;
+  // };
   // angular.extend($scope, {
   //   defaults: {
   //     scrollWheelZoom: false

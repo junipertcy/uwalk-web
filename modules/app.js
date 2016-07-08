@@ -9,6 +9,8 @@
     'leaflet-directive',
     'ngAria',
     'ui.bootstrap',
+    'ngAside',
+    'ngMaterial',
     'ngCookies',
     'ngAnimate',
     'ngTouch',

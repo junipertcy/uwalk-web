@@ -26,5 +26,21 @@ function hoodSearch() {
   }
 
 
+//https://www.npmjs.com/package/angular-aside
+
+// angular.module('myApp')
+//   .controller('MyController', function($scope, $aside) {
+//     var asideInstance = $aside.open({
+//       templateUrl: 'aside.html',
+//       controller: 'AsideCtrl',
+//       placement: 'left',
+//       size: 'lg'
+//     });
+//   });
+
+
+
+
+
 
 }

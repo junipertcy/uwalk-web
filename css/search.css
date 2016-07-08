@@ -1,0 +1,20 @@
+.navbar.navbar-size-large {
+    min-height: 40px;
+    max-height: 40px;
+}
+.navbar-map-overlay {
+    z-index: 0;
+}
+.map-overlay, .navbar-map-overlay, .map-overlay-sidebar, .map-overlay-panel {
+    border-color: #e2e9e6;
+}
+
+.navbar-default {
+    border-bottom: 1px solid #e2e9e6;
+}
+
+.navbar-text h5 {
+  margin-top: -3px;
+  margin-bottom: 0px;
+  margin-left: 50px;
+}
