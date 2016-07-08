@@ -1,14 +1,14 @@
 <div class="container">
 	<br>
 	<div class="well text-center">
-		<h1>{{ vm.title }}</h1>
-		<h3>{{ vm.version }}</h3>
+		<h1>{{ iCtrl.title }}</h1>
+		<h3>{{ iCtrl.version }}</h3>
 		<p>SimHood! is part of the urban walkability project. The DEMO will appear in ICDM'16 conference.</p>
 		<code>modules/index/index.html</code>
 		<hr>
     <h1>Features</h1>
 		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="item in vm.listFeatures">{{item.feature}}</li>
+			<li class="list-group-item" ng-repeat="item in iCtrl.listFeatures">{{item.feature}}</li>
 		</ul>
 		<p><a href="http://www.github.com/newaeonweb/generator-angm" class="btn btn-primary" role="button">Learn more »</a></p>
 	</div>

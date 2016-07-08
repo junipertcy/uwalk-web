@@ -134,6 +134,7 @@ gulp.task('md5-all', function () {
   });
 
   return gulp.src([
+      './assets/**',
       './components/**',
       './modules/**',
       './css/**',

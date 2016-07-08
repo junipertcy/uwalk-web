@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('simhood')
-  .factory('indexService', indexService);
+  .service('indexService', indexService);
 
 indexService.$inject = ['$http'];
 

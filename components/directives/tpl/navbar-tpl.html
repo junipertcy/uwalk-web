@@ -1,11 +1,26 @@
 <nav class="navbar navbar-inverse">
   <div class="container">
-    <div id="navbar" class="collapse navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li ng-repeat="item in menus" ng-class="{active:isActive(item.link)}">
-          <a ui-sref="{{ item.link }}">{{ item.name }}</a>
-        </li>
-      </ul>
-    </div><!--/.nav-collapse -->
+    <div class="col-md-2 no-padding">
+      <a href="/" target="_self" style="margin-top:13px" class="pointer"><img src="/assets/img/logo-fake.png" alt="uwalk" style="width:120px;margin-left:-16px;margin-top:4px" /></a>
+    </div>
+    <div class="col-md-6">
+      <div id="navbar" class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li ng-repeat="item in menus" ng-class="{active:isActive(item.link)}">
+            <a ui-sref="{{ item.link }}">{{ item.name }}</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <form class="navbar-form navbar-left margin-none ng-pristine ng-valid">
+        <div class="search-1">
+          <div class="input-group">
+            <span class="input-group-addon"><i class="icon-search"></i></span>
+            <input type="text" class="form-control form-control-w-150" placeholder="Type in a City ...">
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
 </nav>

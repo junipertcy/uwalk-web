@@ -27,7 +27,9 @@ angular.module('simhood').constant('RouteManifest', {
     resolve: {
       deps: ['$ocLazyLoad',
         function ($ocLazyLoad) {
-          return $ocLazyLoad.load(['modules/about/aboutCtrl.js']);
+          return $ocLazyLoad.load([
+            'modules/about/aboutCtrl.js'
+          ]);
         }
       ]
     }
@@ -40,7 +42,9 @@ angular.module('simhood').constant('RouteManifest', {
     resolve: {
       deps: ['$ocLazyLoad',
         function ($ocLazyLoad) {
-          return $ocLazyLoad.load(['modules/behind/behindCtrl.js']);
+          return $ocLazyLoad.load([
+            'modules/behind/behindCtrl.js'
+          ]);
         }
       ]
     }
@@ -53,7 +57,9 @@ angular.module('simhood').constant('RouteManifest', {
     resolve: {
       deps: ['$ocLazyLoad',
         function ($ocLazyLoad) {
-          return $ocLazyLoad.load(['modules/research/researchCtrl.js']);
+          return $ocLazyLoad.load([
+            'modules/research/researchCtrl.js'
+          ]);
         }
       ]
     }
@@ -65,7 +71,9 @@ angular.module('simhood').constant('RouteManifest', {
     resolve: {
       deps: ['$ocLazyLoad',
         function ($ocLazyLoad) {
-          return $ocLazyLoad.load(['modules/search/searchCtrl.js']);
+          return $ocLazyLoad.load([
+            'modules/search/searchCtrl.js'
+          ]);
         }
       ]
     }

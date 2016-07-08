@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('simhood')
-  .controller('ResearchCtrl', Research);
+  .controller('researchCtrl', Research);
 
-NavBar.$inject = ['indexService'];
+Research.$inject = ['indexService'];
 
 function Research(indexService) {
   /*jshint validthis: true */

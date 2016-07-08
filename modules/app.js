@@ -2,6 +2,7 @@
 
 (function(angular, uwalk) {
   var app = angular.module('simhood', [
+    'angular-loading-bar',
     'ngResource',
     'oc.lazyLoad',
     'angularPainlessTitle', //Not used currently
@@ -12,7 +13,7 @@
     'ngAnimate',
     'ngTouch',
     'ngSanitize',
-    'ui.router',
+    'ui.router'
   ]);
 
   app.constant('API', uwalk.API);

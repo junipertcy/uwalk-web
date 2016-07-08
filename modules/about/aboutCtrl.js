@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('simhood')
-  .controller('AboutCtrl', About);
+  .controller('aboutCtrl', About);
 
-NavBar.$inject = ['indexService'];
+About.$inject = ['indexService'];
 
 function About(indexService) {
   /*jshint validthis: true */

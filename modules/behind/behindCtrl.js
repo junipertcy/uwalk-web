@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('simhood')
-  .controller('BehindCtrl', Behind);
+  .controller('behindCtrl', Behind);
 
-NavBar.$inject = ['indexService'];
+Behind.$inject = ['indexService'];
 
 function Behind(indexService) {
   /*jshint validthis: true */
