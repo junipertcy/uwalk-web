@@ -2,7 +2,7 @@
 angular.module('simhood')
   .controller('searchCtrl', Index);
 
-Index.$inject = ['indexService'];
+Index.$inject = ['indexService', '$scope'];
 
 /*
 * recommend
@@ -10,13 +10,20 @@ Index.$inject = ['indexService'];
 * and bindable members up top.
 */
 
-function Index(indexService) {
+function Index(indexService, $scope) {
   /*jshint validthis: true */
   var vm = this;
   vm.title = "Hello, simhood!";
   vm.version = "1.0.0";
   vm.listFeatures = indexService.getFeaturesList();
-  vm.data = [10,20,30,40,60, 80, 20, 50];
+  angular.extend($scope, {
+    newyork: {
+      lat: 40.748817,
+      lng: -73.985428,
+      zoom: 11
+    }
+  });
+
 
   // angular.extend($scope, {
   //   defaults: {
