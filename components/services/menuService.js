@@ -2,14 +2,14 @@
 
 angular
   .module('simhood')
-  .service('MenuService', MenuService);
+  .service('menuService', menuService);
 
 // Inject your dependencies as .$inject = ['$http', '$anotherDependency'];
 // function Name ($http, $anotherDependency) {...}
 
-MenuService.$inject = ['$http'];
+menuService.$inject = ['$http'];
 
-function MenuService($http) {
+function menuService($http) {
   var menu = [{
       link: 'about',
       name: 'About'

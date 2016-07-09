@@ -7,6 +7,7 @@
     'oc.lazyLoad',
     'angularPainlessTitle', //Not used currently
     'leaflet-directive',
+    'angular-flexslider',
     'ngAria',
     'ui.bootstrap',
     'ngAside',

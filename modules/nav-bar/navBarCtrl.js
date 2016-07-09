@@ -3,13 +3,12 @@
 angular.module('simhood')
 	.controller('NavBarCtrl', NavBar);
 
-NavBar.$inject = ['indexService', 'MenuService'];
+NavBar.$inject = ['indexService', 'menuService', 'queryService'];
 
-function NavBar(indexService, MenuService) {
+function NavBar(indexService, menuService, queryService) {
 	/*jshint validthis: true */
-	var vm = this;
-	vm.title = "simhood!!";
-	vm.menu = MenuService.listMenu();
+	var self = this;
+	self.title = "simhood!!";
+	self.menu = menuService.listMenu();
 
 }
-
