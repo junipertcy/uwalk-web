@@ -1,5 +1,5 @@
 <div class="container" style="width:100%">
-  <leaflet lf-center="newyork" height="480px" width="100%">
+  <leaflet center="newyork" defaults="defaults" height="480px" width="100%">
     <div class="navbar navbar-default navbar-size-large navbar-static-top navbar-map-overlay" style="opacity:0.9; z-index: 1; background: white">
       <div class="navbar-text pull-right" style="margin-top: -5px; margin-right: -8px;">
         <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
@@ -22,13 +22,47 @@
   <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
     <md-toolbar class="md-theme-light">
       <h1 class="md-toolbar-tools">Regions</h1>
-      <h5 style="padding-left: 18px;">About 4,590 results (0.38 seconds)</h5>
+      <h5 style="padding-left: 18px;">About 459 results (0.38 seconds)</h5>
     </md-toolbar>
     <md-content ng-controller="RightCtrl" layout-padding="">
-      <div style="height: 450px;">hello!!</div>
+      <div class="sidebar-block sidebar-block-full">
+        <div class="panel panel-default" ng-repeat="item in queryResults" style="height:140px; ">
+          <div class="panel-body">
+            <div class="media media-clearfix-xs media-clearfix-sm">
+              <div class="media-left">
+                <p>
+                  <a>
+                    <img src={{item.pic}} alt="property" width="150" height="100" class="media-object" />
+                  </a>
+                </p>
+                <div class="text-center small" style="margin-top: -4px;">
+                <strong>Why similar?</strong>
+                </div>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading margin-v-0-10">
+                  <a>Located in {{item.parentCity}}</a>
+                  <small class="text-grey-400"><i class="fa fa-map-o fa-fw"></i> Similarity: {{item.similarity}}</small>
+                </h4>
+                <div>
+                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-beer fa-fw"></i>{{item.data.beer}}</a>
+                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-cutlery fa-fw"></i>{{item.data.cutlery}}</a>
+                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-coffee fa-fw"></i>{{item.data.coffee}}</a>
+                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-bed fa-fw"></i>{{item.data.bed}}</a>
+                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-car fa-fw"></i>{{item.data.car}}</a>
+                </div>
+                <p style="width: 290px; height: 4em; overflow: hidden;">{{item.desc}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
       <md-button ng-click="close()" class="md-primary">
         Search again
+      </md-button>
+      <md-button ng-click="close()" class="md-primary">
+        Suggest a better place
       </md-button>
     </md-content>
   </md-sidenav>

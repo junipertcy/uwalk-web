@@ -1,4 +1,4 @@
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
     <div class="col-md-2 no-padding">
       <a href="/" target="_self" style="margin-top:13px" class="pointer"><img src="/assets/img/logo-fake.png" alt="uwalk" style="width:120px;margin-left:-16px;margin-top:4px" /></a>
@@ -13,26 +13,26 @@
       </div>
     </div>
     <div>
-    <md-content layout-padding="" layout="column" style="background-color: transparent; padding-bottom: 0px; padding-top: 0px;">
-      <form ng-submit="$event.preventDefault()">
-        <md-autocomplete ng-disabled="nbCtrl.isDisabled" md-no-cache="nbCtrl.noCache" md-selected-item="nbCtrl.selectedItem" md-search-text-change="searchTextChange(nbCtrl.searchText)" md-search-text="nbCtrl.searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(nbCtrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Pick a city you are familar with..." md-menu-class="autocomplete-custom-template" style="">
-          <md-item-template >
-            <span class="item-title">
+      <md-content layout-padding="" layout="column" style="background-color: transparent; padding-bottom: 0px; padding-top: 0px;">
+        <form ng-submit="$event.preventDefault()">
+          <md-autocomplete ng-disabled="nbCtrl.isDisabled" md-no-cache="nbCtrl.noCache" md-selected-item="nbCtrl.selectedItem" md-search-text-change="searchTextChange(nbCtrl.searchText)" md-search-text="nbCtrl.searchText" md-selected-item-change="selectedItemChange(item)" md-items="item in querySearch(nbCtrl.searchText)" md-item-text="item.name" md-min-length="0" placeholder="Pick a city you are familar with..." md-menu-class="autocomplete-custom-template" style="">
+            <md-item-template>
+              <span class="item-title">
             <md-icon md-svg-icon="assets/img/city-512.svg"></md-icon>
             <span> {{item.name}} </span>
-            </span>
-            <span class="item-metadata">
+              </span>
+              <span class="item-metadata">
             <span class="item-metastat">
               <strong>{{item.area}}</strong> Area
             </span>
-            <span class="item-metastat">
+              <span class="item-metastat">
               <strong>{{item.population}}</strong> Population
             </span>
-            </span>
-          </md-item-template>
-        </md-autocomplete>
-      </form>
-    </md-content>
+              </span>
+            </md-item-template>
+          </md-autocomplete>
+        </form>
+      </md-content>
     </div>
     <!--       <form class="navbar-form navbar-left margin-none ng-pristine ng-valid">
         <div class="search-1">
