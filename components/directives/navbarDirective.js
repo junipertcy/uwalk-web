@@ -54,6 +54,13 @@ function navBar(queryService) {
     scope.selectedItemChange = selectedItemChange;
     scope.searchTextChange = searchTextChange;
 
+    scope.toSearchOnMap = function () {
+      $window.location.href('/search');
+      console.log('let\'s go search on the map');
+    }
+
+
+
     // write your code here
     scope = {
       brand: '',

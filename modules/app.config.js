@@ -21,10 +21,9 @@ function configure($stateProvider, $urlRouterProvider, $locationProvider, $httpP
   $urlRouterProvider.otherwise('/');
 }
 
-runBlock.$inject = ['$rootScope'];
+runBlock.$inject = ['$rootScope', '$FB'];
 
-function runBlock($rootScope) {
+function runBlock($rootScope, $FB) {
+  // $FB.init('934554036670641');
   console.log('AngularJS run() function...');
 }
-
-
