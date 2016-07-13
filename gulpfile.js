@@ -34,7 +34,9 @@ var paths = {
   release: {
     staticFiles: [
       './bower_components/**/*',
-      './assets/img/**/*'
+      './assets/img/**/*',
+      './assets/fonts/**/*',
+      './assets/geojson/**/*'
     ],
     fonts: [
       './bower_components/font-awesome/fonts/*',

@@ -10,6 +10,7 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log) {
   vm.title = "Hello, simhood!";
   vm.version = "1.0.0";
   vm.listFeatures = indexService.getFeaturesList();
+
   angular.extend($scope, {
     newyork: {
       lat: 40.748817,
@@ -26,9 +27,48 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log) {
       maxZoom: 15,
       attributionControl: false,
       zoomsliderControl: true,
-      zoomControlPosition: 'bottomleft'
+      zoomControlPosition: 'bottomleft',
+      controls: {
+        layers: {
+          visible: false
+        }
+      }
+    },
+    layers: {
+      baselayers: {
+        osm: {
+          name: 'OpenStreetMap',
+          url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+          type: 'xyz'
+        },
+      },
+      overlays:{}
     }
+
   });
+
+  d3.json('assets/geojson/newyork.geojson', function(err, data){
+    angular.extend($scope.layers.overlays, {
+      neighborhoods: {
+        name: "city regions",
+        type: "geoJSONShape",
+        data: data,
+        visible: true,
+        layerOptions: {
+          style: {
+            color: "GhostWhite",
+            fillColor: "Salmon",
+            weight: 2.0,
+            opacity: 0.6,
+            fillOpacity: 0.4
+          }
+        }
+      }
+    });
+
+  });
+
+
 
   $scope.data = {
     cb1: false
@@ -127,8 +167,11 @@ angular.module('simhood').controller('LeftCtrl', ['$scope', '$timeout','$mdSiden
         });
     };
 
+    $scope.isShowSurveyBox = false;
     $scope.showSurveyBox = function () {
-      window.alert('（本功能仍未完成，應該讓下面那個問卷選單滑上來）德德好厲害！');
+      $scope.isShowSurveyBox = !$scope.isShowSurveyBox;
+
+      //window.alert('（本功能仍未完成，應該讓下面那個問卷選單滑上來）德德好厲害！');
     }
 
     $scope.userCity = '';
