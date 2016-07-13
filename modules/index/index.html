@@ -1,23 +1,37 @@
 <div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h2>What is <span itemprop="name">SimYard</span>?</h2>
+      <p><span itemprop="description">
+      SimYard is an search system for searching similar neighbourhoods within and across cities. Contrast to semantic based search, the system enables you to use geographical visual regions as the query term. It can return similar regions.
+      </p>
+    </div>
+    <div class="col-md-4">
+        <div>
+        Show me more~~~
+        </div>
+        <span>
+        Yes I will.
+        </span>
+    </div>
+  </div>
+  <div class="row" style="height: 100px;"></div>
+  <div class="row">
+    <div class="col-md-4">
+      SimYard is an search system for searching similar neighbourhoods within and across cities. Contrast to semantic based search, the system enables you to use geographical visual regions as the query term. It can return similar regions.
+    </div>
+    <div class="col-md-4">
+      SimYard is an search system for searching similar neighbourhoods within and across cities. Contrast to semantic based search, the system enables you to use geographical visual regions as the query term. It can return similar regions.
+    </div>
+    <div class="col-md-4">
+      SimYard is an search system for searching similar neighbourhoods within and across cities. Contrast to semantic based search, the system enables you to use geographical visual regions as the query term. It can return similar regions.
+    </div>
+  </div>
+  <div class="row" style="height: 100px;"></div>
   <flex-slider flex-slide="s in iCtrl.images track by $index">
     <li>
-        <img ng-src="{{s.url}}" style="width: 800px; height: 300px;">
-        <p class="flex-caption">{{s.caption}}</p>
+      <img ng-src="{{s.url}}" style="width: 800px; height: 300px;">
+      <p class="flex-caption">{{s.caption}}</p>
     </li>
   </flex-slider>
-</div>
-<div class="container">
-	<br>
-	<div class="well text-center">
-		<h1>{{ iCtrl.title }}</h1>
-		<h3>{{ iCtrl.version }}</h3>
-		<p>SimHood! is part of the urban walkability project. The DEMO will appear in ICDM'16 conference.</p>
-		<code>modules/index/index.html</code>
-		<hr>
-    <h1>Features</h1>
-		<ul class="list-group">
-			<li class="list-group-item" ng-repeat="item in iCtrl.listFeatures">{{item.feature}}</li>
-		</ul>
-		<p><a href="http://www.github.com/newaeonweb/generator-angm" class="btn btn-primary" role="button">Learn more »</a></p>
-	</div>
 </div>

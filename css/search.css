@@ -27,6 +27,21 @@ md-sidenav.md-closed.md-locked-open-add-active {
     max-width: 520px !important;
 }
 
+//report
+.selectdemoBasicUsage md-input-container {
+  margin-right: 10px; }
+
+//animation (surveyBox)
+.fade {
+  padding: 10px;
+  border: 1px solid black;
+  background: white;
+  transition: all linear 0.5s;
+  opacity: 0;
+}
+
+
+
 //sidebar
 //
 //

@@ -1,0 +1,24 @@
+<div>
+  <h1 class="md-title">Help us improve our system</h1>
+  <div layout="row">
+    <md-input-container>
+      <label>City</label>
+      <md-select ng-model="userCity">
+        <md-option ng-repeat="city in cities" value="{{city.name}}" ng-disabled="$index === 1">
+          {{city.name}}
+        </md-option>
+      </md-select>
+    </md-input-container>
+
+    <md-input-container>
+      <label>District</label>
+      <input>
+    </md-input-container>
+
+    <md-input-container>
+      <label>Description</label>
+      <input>
+    </md-input-container>
+
+  </div>
+</div>

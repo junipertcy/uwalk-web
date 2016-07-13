@@ -61,9 +61,11 @@
       <md-button ng-click="close()" class="md-primary">
         Search again
       </md-button>
-      <md-button ng-click="close()" class="md-primary">
+      <md-button ng-click="showSurveyBox()" class="md-primary">
         Suggest a better place
       </md-button>
+      <div ng-include="'modules/search/report.html'"></div>
     </md-content>
+
   </md-sidenav>
 </div>

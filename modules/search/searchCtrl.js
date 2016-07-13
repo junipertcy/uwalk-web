@@ -1,16 +1,8 @@
 'use strict';
 angular.module('simhood')
-  .controller('searchCtrl', Index)
-
-
+  .controller('searchCtrl', Index);
 
 Index.$inject = ['indexService', '$scope', '$timeout', '$mdSidenav', '$log'];
-
-/*
-* recommend
-* Using function declarations
-* and bindable members up top.
-*/
 
 function Index(indexService, $scope, $timeout, $mdSidenav, $log) {
   /*jshint validthis: true */
@@ -47,7 +39,7 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log) {
     "medium (14-inch)",
     "large (16-inch)",
     "insane (42-inch)"
-  ]
+  ];
 
 
 
@@ -99,7 +91,7 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log) {
           .then(function () {
             $log.debug("toggle " + navID + " is done");
           });
-      }
+      };
     }
 
 
@@ -134,6 +126,15 @@ angular.module('simhood').controller('LeftCtrl', ['$scope', '$timeout','$mdSiden
           $log.debug("close RIGHT is done");
         });
     };
+
+    $scope.showSurveyBox = function () {
+      window.alert('（本功能仍未完成，應該讓下面那個問卷選單滑上來）德德好厲害！');
+    }
+
+    $scope.userCity = '';
+
+    $scope.cities = ('Taipei Beijing').split(' ').map(function(state) {
+      return { name: state }; });
 
     $scope.queryResults = [{
       hoodId: '',
@@ -201,9 +202,24 @@ angular.module('simhood').controller('LeftCtrl', ['$scope', '$timeout','$mdSiden
         car: 10
       }
     }];
-
-
-  }]);
+  }])
+  .animation('.fade', function(){
+    //not finished yet....
+    return {
+      enter: function(element, done) {
+        element.css('display', 'none');
+        $(element).fadeIn(1000, function(){
+          done();
+        })
+      },
+      leave: function(element, done) {
+        element.css('display', 'none');
+        $(element).slideDown(500, function(){
+          done();
+        });
+      }
+    }
+  })
 
 
   // $scope.message = 'false';

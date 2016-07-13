@@ -18,8 +18,8 @@ function hoodSearch() {
   function link(scope, element, attrs, $location) {
     scope.defaults = {
       temp: ''
-    }
-  };
+    };
+  }
 
   function control($scope) {
     return;

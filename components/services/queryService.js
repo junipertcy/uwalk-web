@@ -10,7 +10,7 @@ angular
 queryService.$inject = ['$q', '$log'];
 
 function queryService($q, $log) {
-  self.repos = [{
+  let repos = [{
     'name': 'New York City',
     'url': 'https://github.com/angular/angular.js',
     'area': '305 mi²',
@@ -32,8 +32,8 @@ function queryService($q, $log) {
     'population': '2.2 million',
   }];
 
-  self.simulateQuery = false;
-  self.isDisabled = false;
+  let simulateQuery = false;
+  let isDisabled = false;
 
   return {
     createFilterFor: function(query) {
@@ -42,8 +42,16 @@ function queryService($q, $log) {
       return function filterFn(item) {
         return (item.value.indexOf(lowercaseQuery) === 0);
       };
+    },
+    getRepos: function() {
+      return repos;
+    },
+    getSimulateQuery: function() {
+      return simulateQuery;
+    },
+    getIsDisabled: function() {
+      return isDisabled;
     }
-
   };
 
 }
