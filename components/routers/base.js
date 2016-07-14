@@ -67,6 +67,11 @@ angular.module('simhood').constant('RouteManifest', {
   'search': {
     url: '/search',
     templateUrl: 'modules/search/search.html',
+    params: {
+      lat: null,
+      lng: null,
+      value: null
+    },
     controller: 'searchCtrl',
     resolve: {
       deps: ['$ocLazyLoad',

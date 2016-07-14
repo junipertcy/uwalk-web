@@ -14,7 +14,7 @@
     </div>
     <div>
       <md-content layout-padding="" layout="column" style="background-color: transparent; padding-bottom: 0px; padding-top: 0px;">
-        <form ng-submit="changeView('/search')">
+        <form ng-submit="toSearch(nbCtrl.selectedItem)">
           <md-autocomplete
               ng-disabled="nbCtrl.isDisabled"
               md-no-cache="nbCtrl.noCache"
@@ -23,7 +23,7 @@
               md-search-text="nbCtrl.searchText"
               md-selected-item-change="selectedItemChange(item)"
               md-items="item in querySearch(nbCtrl.searchText)"
-              md-item-text="item.name"
+              md-item-text="item.city_name"
               md-min-length="0"
               placeholder="Pick a city you are familar with..."
               md-menu-class="autocomplete-custom-template"
@@ -31,14 +31,11 @@
             <md-item-template>
               <span class="item-title" style="display:block; line-height:2;">
                 <md-icon md-svg-icon="assets/img/map-marker.svg" style="height:18px; width:18px;"></md-icon>
-                <span md-highlight-text="nbCtrl.searchText" md-highlight-flags="^i"> {{item.name}} </span>
+                <span md-highlight-text="nbCtrl.searchText" md-highlight-flags="^i"> {{item.city_name}} </span>
               </span>
               <span class="item-metadata" style="display:block; line-height:2; margin-top: -5px;">
                 <span class="item-metastat">
-                    Area: <strong>{{item.area}}</strong>
-                </span>
-                <span class="item-metastat">
-                    Population: <strong>{{item.population}}</strong>
+                    Country: <strong>{{item.country_name}}</strong>
                 </span>
               </span>
             </md-item-template>

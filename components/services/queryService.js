@@ -7,9 +7,12 @@ angular
 // Inject your dependencies as .$inject = ['$http', '$anotherDependency'];
 // function Name ($http, $anotherDependency) {...}
 
-queryService.$inject = ['$q', '$log'];
+queryService.$inject = ['$q', 'API', '$http', 'Cache'];
 
-function queryService($q, $log) {
+function queryService($q, API, $http, Cache) {
+  let CACHE_TYPE = "repo_cities";
+  console.log('here problem?');
+
   let repos = [{
     'name': 'New York City',
     'url': 'https://github.com/angular/angular.js',
@@ -51,7 +54,24 @@ function queryService($q, $log) {
     },
     getIsDisabled: function() {
       return isDisabled;
+    },
+    getCities: function(params) {
+      var deferred = $q.defer();
+      var key = params || 'repo_cities'
+      var result = Cache.get(CACHE_TYPE, key);
+      if (result) {
+        deferred.resolve(result);
+      } else {
+        $http.get(API + '/foursquares/raw/getCities', {
+          params: params
+        }).success(function(ret) {
+          Cache.set(CACHE_TYPE, key, ret);
+          deferred.resolve(ret);
+        }).error(function(err){
+          deferred.reject(err);
+        });
+      }
+      return deferred.promise;
     }
   };
-
 }

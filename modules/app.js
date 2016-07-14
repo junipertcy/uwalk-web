@@ -2,6 +2,7 @@
 
 (function(angular, uwalk) {
   var app = angular.module('simhood', [
+    'angular-md5',
     'djds4rce.angular-socialshare',
     'angular-loading-bar',
     'ngResource',

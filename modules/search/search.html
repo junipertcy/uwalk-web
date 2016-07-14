@@ -1,5 +1,5 @@
 <div class="container" style="width:100%">
-  <leaflet center="newyork" layers="layers" defaults="defaults" height="480px" width="100%">
+  <leaflet center="center" controls="controls" layers="layers" defaults="defaults"  height="480px" width="100%">
     <div class="navbar navbar-default navbar-size-large navbar-static-top navbar-map-overlay" style="opacity:0.9; z-index: 1; background: white">
       <div class="navbar-text pull-right" style="margin-top: -5px; margin-right: -8px;">
         <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
@@ -12,8 +12,8 @@
       <a class="toggle pull-right margin-none visible-xs" data-toggle="collapse" data-target="#map-nav"><i class="fa fa-sliders fa-rotate-90"></i></a>
       <div class="collapse navbar-collapse pull-right" id="map-nav" style="width: 200px; margin-top: -10px; ">
         <div>
-          <md-switch ng-model="data.cb1" aria-label="Switch">
-            Unconstrained Query: {{ data.cb1 }}
+          <md-switch ng-model="isUnconstrained.status" aria-label="Switch">
+            Unconstrained Query: {{ isUnconstrained.status }}
           </md-switch>
         </div>
       </div>
