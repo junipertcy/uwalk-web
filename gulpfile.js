@@ -28,7 +28,8 @@ var paths = {
     'components/filters/*.js',
     'components/routers/*.js',
     'components/services/*.js',
-    'modules/**/*.js'
+    'modules/**/*.js',
+    'assets/js/*.js'
   ],
   // release
   release: {
@@ -36,7 +37,8 @@ var paths = {
       './bower_components/**/*',
       './assets/img/**/*',
       './assets/fonts/**/*',
-      './assets/geojson/**/*'
+      './assets/geojson/**/*',
+      'assets/js/*.js'
     ],
     fonts: [
       './bower_components/font-awesome/fonts/*',
@@ -110,7 +112,8 @@ gulp.task('md5-all', function () {
   var files = {
     js: [
       './components/**/*.js',
-      './modules/**/*.js'
+      './modules/**/*.js',
+      'assets/js/*.js'
     ],
     html: [
       './components/**/*.html',

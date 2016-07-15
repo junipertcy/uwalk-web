@@ -2,14 +2,16 @@
 angular.module('simhood')
   .controller('searchCtrl', Index);
 
-Index.$inject = ['indexService', '$scope', '$timeout', '$mdSidenav', '$log', '$location', '$stateParams', 'leafletData'];
+Index.$inject = ['indexService', '$scope', '$timeout', '$mdSidenav', '$log', '$location', '$stateParams', 'leafletData', 'geojsonArea'];
 
-function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $stateParams, leafletData) {
+function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $stateParams, leafletData, geojsonArea) {
   /*jshint validthis: true */
   var vm = this;
   vm.title = "Hello, simhood!";
   vm.version = "1.0.0";
   vm.listFeatures = indexService.getFeaturesList();
+  $scope.savedItems = [];
+
 
   $location.search({
     city: $stateParams.value.split(' ').join('-')
@@ -105,11 +107,15 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
     var layer = e.target;
     if (typeof e.target.isHighlighted === "undefined" || e.target.isHighlighted === false) {
       e.target.isHighlighted = true;
+      $scope.savedItems.push({
+        geoJSON: e.target.feature
+      });
       layer.setStyle({
         fillColor: 'grey'
       });
     } else if (e.target.isHighlighted === true) {
       e.target.isHighlighted = !e.target.isHighlighted;
+      $scope.savedItems.pop(); //wrong! for test only!
       layer.setStyle({
         fillColor: 'Salmon'
       });
@@ -121,15 +127,19 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
 
 
 
+  $scope.$watch("savedItems", function(newArray) {
+      if (newArray.length !== 0) {
+        console.log(newArray);
+        var area = geojsonArea.geometry(newArray[0].geoJSON.geometry);
+        $scope.selectedArea = area;
+      }
+  }, true);
 
-  $scope.savedItems = [];
   $scope.isUnconstrained = {
     status: false
   };
 
-  $scope.$watch(
-    "isUnconstrained.status",
-    function(newValue) {
+  $scope.$watch("isUnconstrained.status", function(newValue) {
       angular.extend($scope.layers.overlays, {
         neighborhoods: {
           visible: !newValue
@@ -149,20 +159,42 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
             }
           });
         }
+        var drawOptions = {
+          draw: {
+            polygon: {
+              shapeOptions: {
+                color: 'purple'
+              }
+            },
+            circle: {
+              shapeOptions: {
+                stroke: true,
+                weight: 4,
+                color: 'blue',
+                opacity: 0.5,
+                fill: true,
+                fillColor: null, //same as color by default
+                fillOpacity: 0.2,
+                clickable: true
+              }
+            }
+          },
+          showRadius: true,
+          edit: {
+            featureGroup: drawnItems
+          }
+        };
 
+        var drawControl = new L.Control.Draw(drawOptions);
         angular.extend($scope, {
           controls: {
-            draw: {},
-            edit: {
-              featureGroup: drawnItems
-            }
+            custom: [drawControl]
           }
         });
 
         leafletData.getMap().then(function(map) {
-          var drawnItems = $scope.controls.edit.featureGroup;
+          var drawnItems = $scope.controls.custom[0].options.edit.featureGroup;
           drawnItems.addTo(map);
-
 
           map.on('draw:created', function(e) {
             var layer = e.layer;
@@ -172,6 +204,7 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
               id: layer._leaflet_id,
               geoJSON: layer.toGeoJSON()
             });
+            console.log('$scope.savedItems pushed: ', $scope.savedItems);
           });
 
           map.on('draw:edited', function(e) {

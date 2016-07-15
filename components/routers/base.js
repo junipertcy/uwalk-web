@@ -77,6 +77,7 @@ angular.module('simhood').constant('RouteManifest', {
       deps: ['$ocLazyLoad',
         function ($ocLazyLoad) {
           return $ocLazyLoad.load([
+            'assets/js/geojson-area.js',
             'modules/search/searchCtrl.js'
           ]);
         }
