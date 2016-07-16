@@ -1,5 +1,5 @@
 <div class="container" style="width:100%">
-  <leaflet center="center" controls="controls" layers="layers" defaults="defaults"  height="480px" width="100%">
+  <leaflet center="center" controls="controls" layers="layers" defaults="defaults" height="480px" width="100%">
     <div class="navbar navbar-default navbar-size-large navbar-static-top navbar-map-overlay" style="opacity:0.9; z-index: 1; background: white">
       <div class="navbar-text pull-right" style="margin-top: -5px; margin-right: -8px;">
         <md-button ng-click="toggleRight()" ng-hide="isOpenRight()" class="md-primary">
@@ -7,7 +7,7 @@
         </md-button>
       </div>
       <div class="navbar-text pull-left">
-        <h5><i class="fa fa-fw fa-info"></i>Discover similar neighbourhoods! You are starting from the New York City. You have selected {{selectedArea || 0}} square meters.</h5>
+        <h5><i class="fa fa-fw fa-info"></i>Discover similar neighbourhoods! <strong>{{city_name}}</strong>: You selected {{selectedArea || '0 square meters.' | areaToNormal}}</h5>
       </div>
       <a class="toggle pull-right margin-none visible-xs" data-toggle="collapse" data-target="#map-nav"><i class="fa fa-sliders fa-rotate-90"></i></a>
       <div class="collapse navbar-collapse pull-right" id="map-nav" style="width: 200px; margin-top: -10px; ">
@@ -20,55 +20,76 @@
     </div>
   </leaflet>
   <md-sidenav class="md-sidenav-right md-whiteframe-4dp" md-component-id="right">
-    <md-toolbar class="md-theme-light">
-      <h1 class="md-toolbar-tools">Regions</h1>
-      <h5 style="padding-left: 18px;">About 459 results (0.38 seconds)</h5>
-    </md-toolbar>
-    <md-content ng-controller="RightCtrl" layout-padding="">
-      <div class="sidebar-block sidebar-block-full">
-        <div class="panel panel-default" ng-repeat="item in queryResults" style="height:160px; ">
-          <div class="panel-body">
-            <div class="media media-clearfix-xs media-clearfix-sm">
-              <div class="media-left">
-                <p>
-                  <a>
-                    <img src={{item.pic}} alt="property" width="150" height="100" class="media-object" />
-                  </a>
-                </p>
-                <div class="text-center small" style="margin-top: -4px;">
-                <strong>Why similar?</strong>
+    <span us-spinner="{radius:30, width:8, length: 16}" spinner-on="showSpinner">
+      <strong ng-hide="!showSpinner">We are comparing regions for you ...</strong>
+    </span>
+    <div id="searchResult" ng-hide="showSpinner">
+      <md-toolbar class="md-theme-light">
+        <h1 class="md-toolbar-tools">Regions</h1>
+        <h5 style="padding-left: 18px;">About 459 results (0.38 seconds)</h5>
+      </md-toolbar>
+      <md-content ng-controller="RightCtrl" layout-padding="">
+        <div class="sidebar-block sidebar-block-full">
+          <div class="panel panel-default" ng-repeat="item in items" style="height:160px; ">
+            <div class="panel-body">
+              <div class="media media-clearfix-xs media-clearfix-sm">
+                <div class="media-left">
+                  <p>
+                    <a>
+                      <img src={{item.pic}} alt="property" width="150" height="100" class="media-object" />
+                    </a>
+                  </p>
+                  <div class="text-center small" style="margin-top: -4px;">
+                    <strong>Why similar?</strong>
+                  </div>
                 </div>
-              </div>
-              <div class="media-body">
-                <h4 class="media-heading margin-v-0-10">
+                <div class="media-body">
+                  <h4 class="media-heading margin-v-0-10">
                   <a>Located in {{item.parentCity}}</a>
                   <small class="text-grey-400"><i class="fa fa-map-o fa-fw"></i> Similarity: {{item.similarity}}</small>
                 </h4>
-                <div>
-                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-beer fa-fw"></i>{{item.data.beer}}</a>
-                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-cutlery fa-fw"></i>{{item.data.cutlery}}</a>
-                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-coffee fa-fw"></i>{{item.data.coffee}}</a>
-                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-bed fa-fw"></i>{{item.data.bed}}</a>
-                  <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-car fa-fw"></i>{{item.data.car}}</a>
+                  <div>
+                    <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-beer fa-fw"></i>{{item.data.beer}}</a>
+                    <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-cutlery fa-fw"></i>{{item.data.cutlery}}</a>
+                    <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-coffee fa-fw"></i>{{item.data.coffee}}</a>
+                    <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-bed fa-fw"></i>{{item.data.bed}}</a>
+                    <a class="text-grey-400" style="padding-right: 5px;"><i class="fa fa-car fa-fw"></i>{{item.data.car}}</a>
+                  </div>
+                  <p style="width: 290px; height: 4em; overflow: hidden;">{{item.desc}}</p>
                 </div>
-                <p style="width: 290px; height: 4em; overflow: hidden;">{{item.desc}}</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></uib-pagination>
-      <md-button ng-click="close()" class="md-primary">
-        Search again
-      </md-button>
-      <md-button ng-click="showSurveyBox()" class="md-primary" slide-toggle="#surveyBox">
-        Help us improve our system
-      </md-button>
-      <div style="" class="slideable" id="surveyBox">
-        <div ng-include="'modules/search/report.html'" ></div>
-      </div>
-
-    </md-content>
-
+        <div class="sidebar-block sidebar-block-full">
+          <ul ng-if="pager.pages.length" class="pagination">
+            <li ng-class="{disabled:pager.currentPage === 1}">
+              <a ng-click="setPage(pager.currentPage - 1)">Previous</a>
+            </li>
+            <li ng-repeat="page in pager.pages" ng-class="{active:pager.currentPage === page}">
+              <a ng-click="setPage(page)">{{page}}</a>
+            </li>
+            <li ng-class="{disabled:pager.currentPage === pager.totalPages}">
+              <a ng-click="setPage(pager.currentPage + 1)">Next</a>
+            </li>
+          </ul>
+        </div>
+        <div class="sidebar-block sidebar-block-full">
+          <md-button ng-click="close()" class="md-primary">
+            Search again
+          </md-button>
+          <md-button ng-click="showSurveyBox()" class="md-primary" slide-toggle="#surveyBox">
+            Help us improve our system
+            <a id="here"></a>
+          </md-button>
+          <a id="here"></a>
+          <div style="" class="slideable" id="surveyBox">
+            <div ng-include="'modules/search/report.html'" id="test"></div>
+            <a id="here"></a>
+          </div>
+          <a id="here"></a>
+        </div>
+      </md-content>
+    </div>
   </md-sidenav>
 </div>

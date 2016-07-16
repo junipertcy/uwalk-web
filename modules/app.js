@@ -17,7 +17,8 @@
     'ngCookies',
     'ngAnimate',
     'ngSanitize',
-    'ui.router'
+    'ui.router',
+    'angularSpinner'
   ]);
 
   app.constant('API', uwalk.API);

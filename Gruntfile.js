@@ -49,7 +49,8 @@ module.exports = function (grunt) {
 					'modules/**/*Ctrl.js',
 					'components/routers/*.js',
 					'components/services/*.js',
-					'components/directives/*.js'
+					'components/directives/*.js',
+					'components/filters/*.js'
 				],
 				dest: 'assets/js/<%= pkg.name %>-appbundle.js'
 			},
@@ -127,7 +128,8 @@ module.exports = function (grunt) {
 						'modules/**/*Ctrl.js',
 						'components/routers/*.js',
 						'components/services/*.js',
-						'components/directives/*.js'
+						'components/directives/*.js',
+						'components/filters/*.js'
 					]
 				}
 			},

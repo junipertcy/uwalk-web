@@ -50,6 +50,9 @@ md-sidenav.md-closed.md-locked-open-add-active {
   left: 0;
 }
 
+.pagination a {
+  cursor: pointer;
+}
 
 //sidebar
 //
