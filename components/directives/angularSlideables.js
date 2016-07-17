@@ -14,8 +14,10 @@ angular.module('simhood')
                 attrs.duration = (!attrs.duration) ? '1s' : attrs.duration;
                 attrs.easing = (!attrs.easing) ? 'ease-in-out' : attrs.easing;
                 element.css({
-                    'overflow': 'hidden',
-                    'height': '0px',
+                    'overflow': 'visible',
+                    'height': '80px',
+                    'background-color': 'white',
+                    'opacity': 1,
                     'transitionProperty': 'height',
                     'transitionDuration': attrs.duration,
                     'transitionTimingFunction': attrs.easing
@@ -33,9 +35,10 @@ angular.module('simhood')
             element.bind('click', function() {
                 var content = target.querySelector('.slideable_content');
                 if(!attrs.expanded) {
-                    content.style.border = '1px solid rgba(0,0,0,0)';
                     var y = content.clientHeight;
-                    content.style.border = 2 + 'px';
+                    content.style.overflow = 'visible';
+                    content.style.height = '80px';
+                    content.style['background-color'] = 'transparent';
                     content.style["border"] = "2px solid lightblue";
                     content.style["border-radius"] = "5px";
                     target.style.height = '60px';

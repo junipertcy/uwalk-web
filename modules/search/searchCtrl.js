@@ -53,7 +53,8 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
 
   });
 
-  d3.json('assets/geojson/newyork.geojson', function(err, data) {
+  let geojsonPath = 'assets/geojson/' + ($stateParams.value ? $stateParams.value.split(' ').join('') : 'newyork') + '.geojson';
+  d3.json(geojsonPath, function(err, data) {
     angular.extend($scope.layers.overlays, {
       neighborhoods: {
         name: "cityRegions",
@@ -102,10 +103,19 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
     }
   }
 
+  var last;
   var highlightFeature = function(e) {
-    console.log(e.target);
     var layer = e.target;
+
     if (typeof e.target.isHighlighted === "undefined" || e.target.isHighlighted === false) {
+      if (typeof last !== "undefined") {
+        last.isHighlighted = !last.isHighlighted;
+        $scope.savedItems.pop();
+        last.setStyle({
+          fillColor: 'Salmon'
+        });
+      }
+
       e.target.isHighlighted = true;
       $scope.savedItems.push({
         geoJSON: e.target.feature
@@ -113,12 +123,14 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
       layer.setStyle({
         fillColor: 'grey'
       });
+      last = layer;
     } else if (e.target.isHighlighted === true) {
       e.target.isHighlighted = !e.target.isHighlighted;
       $scope.savedItems.pop(); //wrong! for test only!
       layer.setStyle({
         fillColor: 'Salmon'
       });
+      last = void 0;
     }
     if (!L.Browser.ie && !L.Browser.opera) {
       layer.bringToFront();
@@ -128,11 +140,12 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
 
 
   $scope.$watch("savedItems", function(newArray) {
-      if (newArray.length !== 0) {
-        console.log(newArray);
-        var area = geojsonArea.geometry(newArray[0].geoJSON.geometry);
-        $scope.selectedArea = area;
-      }
+    if (newArray.length !== 0) {
+      var area = geojsonArea.geometry(newArray[0].geoJSON.geometry);
+      $scope.selectedArea = area;
+    } else {
+      $scope.selectedArea = 0;
+    }
   }, true);
 
   $scope.isUnconstrained = {
@@ -165,14 +178,14 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
             marker: false,
             polygon: {
               shapeOptions: {
-                color: 'purple'
+                color: 'Salmon'
               }
             },
             circle: {
               shapeOptions: {
                 stroke: true,
                 weight: 4,
-                color: 'blue',
+                color: 'Salmon',
                 opacity: 0.5,
                 fill: true,
                 fillColor: null, //same as color by default
@@ -197,8 +210,13 @@ function Index(indexService, $scope, $timeout, $mdSidenav, $log, $location, $sta
         leafletData.getMap().then(function(map) {
           var drawnItems = $scope.controls.custom[0].options.edit.featureGroup;
           drawnItems.addTo(map);
-
+          $scope.savedItems.pop();
           map.on('draw:created', function(e) {
+            if ($scope.savedItems.length === 1) {
+              $scope.warning = 'Please delete the old region before selecting a new region. :-)';
+              return;
+            }
+            $scope.warning = '';
             var layer = e.layer;
             drawnItems.addLayer(layer);
 
@@ -325,14 +343,11 @@ angular.module('simhood')
         });
     };
 
-
-    $scope.isShowSurveyBox = false;
+    $scope.isSurveyBoxShown = true;
     $scope.showSurveyBox = function($location, $anchorScroll) {
-      $scope.isShowSurveyBox = !$scope.isShowSurveyBox;
-
+      $scope.isSurveyBoxShown = !$scope.isSurveyBoxShown;
       $location.hash("here");
       $anchorScroll();
-
       //window.alert('（本功能仍未完成，應該讓下面那個問卷選單滑上來）德德好厲害！');
     }
 

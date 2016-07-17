@@ -4,7 +4,6 @@ angular.module('simhood')
   .filter('areaToNormal', function () {
   //Association football (soccer) field, a rectangular field, usually 105 m × 68 m or 7140 m2
   return function (input) {
-    console.log('accessed!');
     if (!input) return input;
     if (typeof input !== 'number') {
       return "0 square meters."
@@ -18,4 +17,16 @@ angular.module('simhood')
       return input.toPrecision(3).toString() + ' square kilometers. ( about ' + estimate.toString() + ' golf courses)';
     }
   };
-})
+}).filter('capitalizeEveryFirstLetter', function () {
+  return function (input) {
+    if (!input) return input;
+    if (typeof input !== 'string') {
+      return input;
+    }
+    let _output = [];
+    input.split(' ').forEach(function (o) {
+      _output.push(o.charAt(0).toUpperCase() + o.slice(1));
+    });
+    return _output.join(' ');
+  };
+});
